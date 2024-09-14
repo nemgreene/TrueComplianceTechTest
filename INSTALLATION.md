@@ -16,8 +16,8 @@ npm dev
 npm build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
+### Run Unit Tests with [Vitest](https://vitest.dev/)*
+Refer to 
 ```sh
 npm test:unit
 ```
