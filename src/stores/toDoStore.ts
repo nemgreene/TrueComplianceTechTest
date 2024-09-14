@@ -42,7 +42,7 @@ export const useTodoStore = defineStore('todoList', {
           this.todoList
             .map((v: ToDoItem) => v.id)
             .sort()
-            .reverse()[0] + 1 || 0,
+            .reverse()[0] + 1 || 1,
         completed: false
       })
       this.formValue = ''

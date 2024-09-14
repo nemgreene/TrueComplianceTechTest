@@ -21,8 +21,6 @@ export default {
     const { todoList, editIndex } = storeToRefs(store)
     const { toggleCompleted, deleteTodo, addTodo, loadState, clearComplete } = store
 
-    const thClass = 'bg-blue-900 border text-center px-8 py-4'
-
     onMounted(() => {
       let read = JSON.parse(localStorage.getItem('piniaState'))[0]
       loadState(read || {})
@@ -34,7 +32,6 @@ export default {
       clearComplete,
       deleteTodo,
       store,
-      thClass,
       todoList,
       toggleCompleted,
       editIndex
@@ -62,14 +59,14 @@ export default {
 <template>
   <div class="text-4xl">
     <div class="py-3" @click="clearComplete()">
-      <button class="todoButton">Clear Completed</button>
+      <button class="todoButton" v-if="todoList.length > 0">Clear Completed</button>
     </div>
     <table class="shadow-lg bg-black border-collapse table-auto">
       <thead v-if="todoList.length > 0">
         <tr>
-          <th :class="thClass">Title</th>
-          <th :class="thClass">Completed</th>
-          <th :class="thClass">Actions</th>
+          <th class="bg-blue-900 border text-center px-8 py-4">Title</th>
+          <th class="bg-blue-900 border text-center px-8 py-4">Completed</th>
+          <th class="bg-blue-900 border text-center px-8 py-4">Actions</th>
         </tr>
       </thead>
       <div v-else>No Todos Found</div>
@@ -92,7 +89,7 @@ export default {
         "
       />
       <button
-        :disabled="editIndex"
+        :disabled="Boolean(editIndex)"
         @click="addTodo()"
         class="flex flex-row items-center justify-center todoButton disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-900"
       >
