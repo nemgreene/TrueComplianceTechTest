@@ -16,11 +16,8 @@ export default {
     const { editIndex } = storeToRefs(store)
     const { toggleCompleted, deleteTodo, setEditIndex, submitEdit } = store
 
-    const tdClass = 'border px-4 py-4'
-
     return {
       deleteTodo,
-      tdClass,
       toggleCompleted,
       setEditIndex,
       editIndex,
@@ -32,7 +29,7 @@ export default {
 </script>
 
 <template>
-  <td :class="tdClass">
+  <td class="border px-4 py-4">
     <span v-if="editIndex !== todo.id" :class="{ completed: todo.completed }">
       {{ todo.text }}
     </span>
@@ -47,11 +44,11 @@ export default {
       "
     />
   </td>
-  <td class="cursor-pointer" :class="tdClass" @click.stop="toggleCompleted(todo.id)">
+  <td class="cursor-pointer border px-4 py-4" @click.stop="toggleCompleted(todo.id)">
     <div v-if="todo.completed" class="iconContainer">✅</div>
     <div v-else class="iconContainer">❌</div>
   </td>
-  <td :class="tdClass">
+  <td class="border px-4 py-4">
     <div class="flex flex-row gap-3">
       <button v-if="editIndex !== todo.id" @click="setEditIndex(todo.id)" class="todoButton">
         <span class="block"> Edit </span>
